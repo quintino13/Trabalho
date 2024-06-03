@@ -32,7 +32,7 @@
             cursor: pointer;
         }
         .container {
-            max-width: 90%; 
+            max-width: 90%;
             margin: 100px auto;
             background-color: #fff;
             padding: 20px;
@@ -42,25 +42,35 @@
         input[type="text"],
         input[type="password"],
         input[type="submit"] {
-            width: calc(100% - 20px);
+            width: calc(100% - 20px); 
             padding: 10px;
             margin: 5px 0;
             border: 1px solid #ccc;
             border-radius: 3px;
             box-sizing: border-box;
         }
-        input[type="submit"] {
-            background-color:#c20b0b;
+        input[type="submit"], .clear-button {
+            background-color: #c20b0b;
             color: #fff;
             border: none;
             cursor: pointer;
         }
-        input[type="submit"]:hover {
-            background-color: #c20b0b;
+        input[type="submit"]:hover, .clear-button:hover {
+            background-color: #9c0606;
         }
         .existing-account {
             text-align: center;
             margin-top: 20px;
+        }
+        .error-message {
+            display: none;
+            color: #c20b0b;
+            margin-top: 5px;
+        }
+        .success-message {
+            display: none;
+            color: #0a7e07;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -71,29 +81,57 @@
     </header>
     <div class="container">
         <h2>Criar Conta</h2>
-        <form action="conectar.html">
-            <input type="text" id="email1" placeholder="Digite seu e-mail" required>
+        <form id="signup-form" action="index (3).html" method="post" onsubmit="return validateForm()">
+            <input type="text" id="email" placeholder="Digite seu e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Por favor insira um endereço de e-mail válido" required>
             <input type="password" id="password" placeholder="Digite sua senha" required>
-            <input type="submit" value="Criar Conta" onclick="validateForm()">
-
+            <input type="submit" value="Criar Conta">
+            <button type="button" class="clear-button" onclick="clearFields()" style="color:#ffffff;">Limpar Campos</button>
         </form>
-        <p id="validation-message" style="display: none; color: #c20b0b;">Por favor, preencha todos os campos.</p>
+        <p id="validation-message" class="error-message">Por favor, preencha todos os campos.</p>
+        <p id="email-format-message" class="error-message">Por favor, insira um e-mail válido.</p>
         <div class="existing-account">
             <p>Já tem uma conta? <a href="conectar.html" style="color:#c20b0b;">Conectar</a></p>
         </div>
     </div>
 
     <script type="text/javascript">
-        function validateForm() {
-            var email = document.getElementById("email1").value;
+     function isValidEmail(email) {
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+     }
+    function validateForm() {
+            var email = document.getElementById("email").value;
             var password = document.getElementById("password").value;
-            if (email == "" || password === "") {
+            var isValid = true;
+
+            document.getElementById("validation-message").style.display = "none";
+            document.getElementById("email-format-message").style.display = "none";
+
+            if (email === "" || password === "") {
                 document.getElementById("validation-message").style.display = "block";
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                document.getElementById("email-format-message").style.display = "block";
+                alert("Por favor, insira um email válido.");
+                isValid = false;
+                
+                
             } else {
-                document.getElementById("validation-message").style.display = "none";
-                
-                
+                document.getElementById("success-message").style.display = "block";
             }
+            return isValid;
+        }
+
+        function clearFields() {
+            document.getElementById("email").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("validation-message").style.display = "none";
+            document.getElementById("email-format-message").style.display = "none";
+            document.getElementById("success-message").style.display = "none";
+        }
+        function validateEmail(email) {
+            var re = /\S+@\S+\.\S+/;
+            return re.test(email);
         }
     </script>
 </body>
