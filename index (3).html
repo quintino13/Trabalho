@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChefOnline</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #c20b0b;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        #search-bar {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        #search-bar input[type="text"] {
+            padding: 0.5rem;
+            width: 80%;
+            max-width: 400px;
+            font-size: 1rem;
+        }
+
+        #promotion {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        #promotion img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #promotion h2 {
+            margin-top: 1rem;
+            font-size: 2rem;
+            color: #c20b0b;
+        }
+
+        #banner {
+            background: url('c:\Users\Dell\Desktop\ChefOnline.png') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+        }
+
+        #banner h2 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        #banner p {
+            margin: 1rem 0;
+        }
+
+        #banner .btn {
+            background-color: #c20b0b;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        #menu {
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .menu-item {
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .menu-item img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .menu-item h3 {
+            margin: 0.5rem 0;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        footer h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        #comment-box {
+            margin-top: 1rem;
+        }
+
+        #comment-box textarea {
+            width: 80%;
+            max-width: 600px;
+            height: 100px;
+            padding: 0.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #comment-box button {
+            margin-top: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #c20b0b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            #banner {
+                padding: 3rem 1rem;
+            }
+
+            #banner h2 {
+                font-size: 2rem;
+            }
+
+            #menu .menu-item img {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul li {
+                display: block;
+                margin: 0.5rem 0;
+            }
+
+            #search-bar input[type="text"] {
+                width: 90%;
+            }
+
+            #banner h2 {
+                font-size: 1.5rem;
+            }
+
+            #banner .btn {
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="chef.png" alt="Logo" width="200" height="60">
+        <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="file:///C:/Users/WINDOWS%2010/Documents/abc/menu.html">Cardápio</a></li>
+                <li><a href="#contact">Comentários</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="search-bar">
+        <input list="browsers"placeholder="Buscar...">
+        <datalist id="browsers">
+            <option value="pizza de calabresa">
+            <option value="hamburguer artesanal">
+            <option value="sushi combo">
+            <option value="salada caesar">
+        </datalist>
+    </div>
+
+    <section id="promotion">
+        <img src="promoo.png" alt="Promoção da Semana" width="800" height="400">
+        <h2>Promoção da Semana</h2>
+    </section>
+
+    <section id="banner">
+        <h2>Deliciosa comida entregue na sua porta!</h2>
+        <p>Peça agora e aproveite nossas promoções.</p>
+        <a href="file:///C:/Users/WINDOWS%2010/Documents/abc/menu.html" class="btn">Veja o Cardápio</a>
+    </section>
+
+
+    <footer id="contact">
+        <h2>Comentários</h2>
+        <div id="comment-box">
+            <textarea placeholder="Deixe seu comentário aqui..."></textarea>
+            <br>
+            <button>Enviar</button>
+        </div>
+    </footer>
+    <script type="text/javascript">
+        function validateForm() {
+            var browsers = document.getElementById("browsers").value;
+            if (browsers == "pizza de calabresa" || browsers === "hamburguer artesanal") {
+             
+                document.getElementById("validation-message").style.display = "none";
+                
+                
+            }
+        }
+    </script>
+</body>
+</html>
