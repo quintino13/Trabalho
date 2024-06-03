@@ -63,7 +63,7 @@
         }
 
         #banner {
-            background: url('c:\Users\Dell\Desktop\ChefOnline.png') no-repeat center center/cover;
+            background: url('c:/Users/Dell/Desktop/ChefOnline.png') no-repeat center center/cover;
             color: white;
             text-align: center;
             padding: 5rem 1rem;
@@ -196,17 +196,18 @@
     </header>
 
     <div id="search-bar">
-        <input list="browsers"placeholder="Buscar...">
+        <input list="browsers" id="search-input" placeholder="Buscar...">
         <datalist id="browsers">
-            <option value="pizza de calabresa">
-            <option value="hamburguer artesanal">
-            <option value="sushi combo">
-            <option value="salada caesar">
+            <option value="Pizza de Calabresa">
+            <option value="Hambúrguer Artesanal">
+            <option value="Sushi Combo">
+            <option value="Salada Caesar">
         </datalist>
+        <button onclick="redirectToMenu()">Buscar</button>
     </div>
 
     <section id="promotion">
-        <img src="promoo.png" alt="Promoção da Semana" width="800" height="400">
+        <img src="promoo.png" alt="Promoção da Semana">
         <h2>Promoção da Semana</h2>
     </section>
 
@@ -216,7 +217,6 @@
         <a href="menu.html" class="btn">Veja o Cardápio</a>
     </section>
 
-
     <footer id="contact">
         <h2>Comentários</h2>
         <div id="comment-box">
@@ -225,14 +225,19 @@
             <button>Enviar</button>
         </div>
     </footer>
+
     <script type="text/javascript">
-        function validateForm() {
-            var browsers = document.getElementById("browsers").value;
-            if (browsers == "pizza de calabresa" || browsers === "hamburguer artesanal") {
-             
-                document.getElementById("validation-message").style.display = "none";
-                
-                
+        function redirectToMenu() {
+            var searchInput = document.getElementById("search-input").value;
+            var menuUrl = "menu.html";
+
+            if (searchInput === "Pizza de Calabresa" ||
+                searchInput === "Hambúrguer Artesanal" ||
+                searchInput === "Sushi Combo" ||
+                searchInput === "Salada Caesar") {
+                window.location.href = menuUrl + "#" + searchInput.replace(/ /g, "-").toLowerCase();
+            } else {
+                alert("Item não encontrado no menu.");
             }
         }
     </script>
